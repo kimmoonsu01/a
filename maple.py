@@ -39,4 +39,4 @@ success_fail_count.rename_axis('강화 단계', axis='index', inplace=True)
 # item_upgrade_result 컬럼을 '강화'로 이름 변경
 success_fail_count.columns.name = '강화'
 # 결과 확인
-success_fail_count
+success = pd.DataFrame(success_fail_count)
