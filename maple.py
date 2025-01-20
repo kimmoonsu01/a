@@ -38,4 +38,4 @@ success_fail_count["fail_rate"] = 100 - success_fail_count["success_rate"]
 success_fail_count.reset_index(inplace=True)
 success_fail_count.rename(columns={"before_starforce_count": "asd"}, inplace=True)
 success = pd.DataFrame(success_fail_count)
-reture success
+return success
