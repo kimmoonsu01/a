@@ -33,10 +33,9 @@ success_fail_count["성공 확률 (%)"] = (success_fail_count["성공"] / succes
 success_fail_count["성공 확률 (%)"] = success_fail_count["성공 확률 (%)"].round(2)
 success_fail_count["실패 확률 (%)"] = 100 - success_fail_count["성공 확률 (%)"]
 
-# before_starforce_count를 '강화 단계'로 이름 변경
-success_fail_count.rename_axis('강화 단계', axis='index', inplace=True)
+# 데이터 프레임 재구성
+success_fail_count.reset_index(inplace=True)
+success_fail_count.rename(columns={"before_starforce_count": "강화 단계"}, inplace=True)
 
-# item_upgrade_result 컬럼을 '강화'로 이름 변경
-success_fail_count.columns.name = '강화'
-# 결과 확인
 success = pd.DataFrame(success_fail_count)
+return success
