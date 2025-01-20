@@ -25,17 +25,16 @@ success_fail_count = df.groupby(["before_starforce_count"])["item_upgrade_result
 
 
  # 실패 데이터가 없는 경우 기본값 추가
-if "fail" not in success_fail_count.columns:
-     success_fail_count["fail"] = 0
+if "실패" not in success_fail_count.columns:
+     success_fail_count["실패"] = 0
 
   # 성공 및 실패 확률 계산
-success_fail_count["success_rate"] = (success_fail_count["성공"] / success_fail_count.sum(axis=1)) * 100
-success_fail_count["success_rate"] = success_fail_count["success_rate"].round(2)
-success_fail_count["fail_rate"] = 100 - success_fail_count["success_rate"]
+success_fail_count["성공_확률"] = (success_fail_count["성공"] / success_fail_count.sum(axis=1)) * 100
+success_fail_count["성공_확률"] = success_fail_count["성공_확률"].round(2)
+success_fail_count["실패_확률"] = 100 - success_fail_count["성공_확률"]
 
   # 데이터 프레임 재구성
 success_fail_count.reset_index(inplace=True)
-success_fail_count.rename(columns={"before_starforce_count": "asd"}, inplace=True)
 success = pd.DataFrame(success_fail_count)
-success.rename(columns={"실패(유지)": "fail_"}, inplace=True)
+success.rename(columns={"실패(유지)": "실패_유지"}, inplace=True)
 success
