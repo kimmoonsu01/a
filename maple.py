@@ -21,11 +21,10 @@ text = response.json()
 text
   # # DataFrame 으로 변환
 df = pd.DataFrame(text['starforce_history'])
-
-  # 실패 데이터를 추가하거나 기본값으로 실패 확률을 계산
 success_fail_count = df.groupby(["before_starforce_count"])["item_upgrade_result"].value_counts().unstack(fill_value=0)
 
-  # 실패 데이터가 없는 경우 기본값 추가
+
+ # 실패 데이터가 없는 경우 기본값 추가
 if "fail" not in success_fail_count.columns:
      success_fail_count["fail"] = 0
 
@@ -38,4 +37,5 @@ success_fail_count["fail_rate"] = 100 - success_fail_count["success_rate"]
 success_fail_count.reset_index(inplace=True)
 success_fail_count.rename(columns={"before_starforce_count": "asd"}, inplace=True)
 success = pd.DataFrame(success_fail_count)
-
+success.rename(columns={"실패(유지)": "fail_"}, inplace=True)
+success
