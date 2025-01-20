@@ -36,5 +36,5 @@ success_fail_count["실패_확률"] = 100 - success_fail_count["성공_확률"]
   # 데이터 프레임 재구성
 success_fail_count.reset_index(inplace=True)
 success_fail_count.rename(columns={"실패(유지)": "실패_유지"}, inplace=True)
-success = pd.DataFrame(success_fail_count)
-success
+success_fail = pd.DataFrame(success_fail_count)
+success_fail
