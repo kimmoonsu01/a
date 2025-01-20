@@ -37,6 +37,6 @@ success_fail_count["실패 확률 (%)"] = 100 - success_fail_count["성공 확�
 success_fail_count.reset_index(inplace=True)
 success_fail_count.rename(columns={"before_starforce_count": "강화 단계"}, inplace=True)
 
-success_fail = pd.DataFrame(success_fail_count)
-success_fail
+success = pd.DataFrame(success_fail_count)
 
+success
