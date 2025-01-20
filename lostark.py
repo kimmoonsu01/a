@@ -9,14 +9,17 @@ headers = {
     'Authorization': f'bearer {API_KEY}' ,
     'accept': 'application/json'
 }
-response = requests.get(url, headers=headers)
-data = response.json()
+  response = requests.get(url, headers=headers)
+  data = response.json()
 
-all_stats = []
-for item in data:
-    for stat in item["Stats"]:
-        stat["Name"] = item["Name"]
-        all_stats.append(stat)
+  all_stats = []
+  for item in data:
+      for stat in item["Stats"]:
+          stat["Name"] = item["Name"]
+          all_stats.append(stat)
 
-df_1= pd.DataFrame(all_stats)
-df_1
+  df = pd.DataFrame(all_stats)
+  df = df[df['AvgPrice'] != 0]
+  df = df.reset_index()
+  df = df.drop(columns=['index'])
+  return df
