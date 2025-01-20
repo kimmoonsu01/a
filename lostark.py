@@ -11,5 +11,12 @@ headers = {
 }
 response = requests.get(url, headers=headers)
 data = response.json()
-df_1 = pd.DataFrame(data)
 
+all_stats = []
+for item in data:
+    for stat in item["Stats"]:
+        stat["Name"] = item["Name"]
+        all_stats.append(stat)
+
+df_1= pd.DataFrame(all_stats)
+df_1
